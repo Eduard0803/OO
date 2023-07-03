@@ -6,15 +6,15 @@ class Duracao{
 	  
 	private Duracao(){}	
 	public Duracao(String dataEntrada, String horarioEntrada, String dataSaida, String horarioSaida){
-		this.dataEntrada = new Data(computeTime(dataEntrada)[0], computeTime(dataEntrada)[1]);
+		this.dataEntrada = new Data(computeTime(dataEntrada)[0], computeTime(dataEntrada)[1], computeTime(dataEntrada)[2]);
 		this.horarioEntrada = new Horario(computeHour(horarioEntrada)[0], computeHour(horarioEntrada)[1]);
 		
-		this.dataSaida = new Data(computeTime(dataSaida)[0], computeTime(dataSaida)[1]);
+		this.dataSaida = new Data(computeTime(dataSaida)[0], computeTime(dataSaida)[1], computeTime(dataSaida)[2]);
 		this.horarioSaida = new Horario(computeHour(horarioSaida)[0], computeHour(horarioSaida)[1]);
 	}
 		
 	int[] computeTime(String date){ // metodo para reduzir cada parcela da data a um inteiro
-		int[] data = new int[2];
+		int[] data = new int[3];
 		int i=0;
 		for(String str : date.split("/"))
 			data[i++]=Integer.parseInt(str);
@@ -24,21 +24,18 @@ class Duracao{
 	int[] computeHour(String horario){ // transforma a string horario em um vetor de int com as horas e os minutos
 		int[] horas = new int[2];
 		int i=0;
-		for(String buffer : horario.split(":"))
-			horas[i++] = Integer.parseInt(buffer);
+		for(String str : horario.split(":"))
+			horas[i++] = Integer.parseInt(str);
 		return horas;
 	}
 
 	public int calcularDiferencaTempo() {
-		int diaEntrada = dataEntrada.getDia(), mesEntrada = dataEntrada.getMes(), horaEntrada = horarioEntrada.getHora(), minutoEntrada = horarioEntrada.getMinuto();
-		int diaSaida = dataSaida.getDia(), mesSaida = dataSaida.getMes(), horaSaida = horarioSaida.getHora(), minutoSaida = horarioSaida.getMinuto();
-
-		// System.out.println(mesEntrada);
-		// System.out.println(mesSaida);
+		int diaEntrada = dataEntrada.getDia(), mesEntrada = dataEntrada.getMes(), anoEntrada = dataEntrada.getAno(), horaEntrada = horarioEntrada.getHora(), minutoEntrada = horarioEntrada.getMinuto();
+		int diaSaida = dataSaida.getDia(), mesSaida = dataSaida.getMes(), anoSaida = dataSaida.getAno(), horaSaida = horarioSaida.getHora(), minutoSaida = horarioSaida.getMinuto();
 
 		// Criação dos objetos LocalDateTime para a entrada e saída    	
-		LocalDateTime entrada = LocalDateTime.of(2023, mesEntrada, diaEntrada, horaEntrada, minutoEntrada, 0);
-		LocalDateTime saida = LocalDateTime.of(2023, mesSaida, diaSaida, horaSaida, minutoSaida, 0);
+		LocalDateTime entrada = LocalDateTime.of(anoEntrada, mesEntrada, diaEntrada, horaEntrada, minutoEntrada, 0);
+		LocalDateTime saida = LocalDateTime.of(anoSaida, mesSaida, diaSaida, horaSaida, minutoSaida, 0);
 		
 		// Calcula a diferença entre as datas
 		Duration duracao = Duration.between(entrada, saida);
