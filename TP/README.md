@@ -4,7 +4,7 @@ OO - Orientação à Objetos
 Prof: [Dr. Andre Luiz Peron Martins Lanna](https://github.com/andrelanna/)
 
 ## Diagramas
-[Diagrama de Classes](Diagrams/Class_Diagram.png)  
+[Diagrama de Classes](Diagrams/Class_Diagram.jpg)  
 [Diagrama de Objetos](Diagrams/Object_Diagram.png)
 
 ## Estudantes
