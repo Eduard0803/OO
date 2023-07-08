@@ -1,13 +1,15 @@
-## Trabalho Programado
+### Trabalho Programado
 
 OO - Orientação à Objetos  
 Prof: [Dr. Andre Luiz Peron Martins Lanna](https://github.com/andrelanna/)
 
-## Diagramas
+### Diagramas
 [Diagrama de Classes](Diagrams/Class_Diagram.jpg)  
 [Diagrama de Objetos](Diagrams/Object_Diagram.png)
 
-## Estudantes
+### [Entrega 2](entrega2/)
+
+### Estudantes
 | Nome | Matricula |  
 | -----| -----------|  
 | EDUARDO BELARMINO SILVA | 221008580 |  
