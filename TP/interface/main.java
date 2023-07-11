@@ -3,7 +3,7 @@ import java.awt.*;
 import java.io.*;
 
 class main{
-    public static ImageIcon icon = new ImageIcon("C:/Users/eduar/OneDrive/Área de Trabalho/images/icon_1.png"); // define qual a imagem será o icone
+    public static ImageIcon icon = new ImageIcon("C:/Users/eduar/OneDrive/Área de Trabalho/OO/TP/interface/images/icon_1.png"); // define qual a imagem será o icone
     public static JFrame initialFrame = new JFrame("SGE"), eventFrame = new JFrame("SGE"); // cria o JFrame e define o titulo como 'SGE'
     public static JPanel panel = new JPanel(), eventPanel = new JPanel();
     public static String parkingData, eventData;
@@ -18,28 +18,14 @@ class main{
         setInitialPage(); // define o JPanel inicial
         setEventPage(); // define o JPanel dos eventos
         
-        exibirInitialPage();
+        exibirInitialPage(); // exibe a pagina inicial
     }
 
-    private static void writeFile(String fileName){
-        try{
-            File arq = new File(fileName); // cria um objeto do tipo 'File' para o arquivo 'data_user.txt'
-            BufferedWriter bw = new BufferedWriter(new FileWriter(arq)); // cria um objeto para a escrita no arquivo 'data_user.txt'
-            bw.write((fileName.equals("estacionamentos.txt") ? parkingData : eventData) + "\n"); // escreve os dado no arquivo 
-            bw.close(); // fecha o arquivo
-        }catch(IOException e){}
-    }
-    
     private static void closeAction(JFrame frame, String fileName){
         if(fileName.equals("estacionamentos.txt"))
-            parkingData = "placa: " + placaField.getText() + 
-                            "\ndataIn: " + dataInField.getText() + "\nhoraIn: " + HorarioInField.getText() + 
-                            "\ndataOut: " + dataOutField.getText() + "\nhoraOut: " + HorarioOutField.getText();
+            parkingData = "placa: " + placaField.getText() + "\nhoraIn: " + HorarioInField.getText() + "\nhoraOut: " + HorarioOutField.getText();
         else
-            eventData = "nome: " + NameField.getText() + 
-                            "\ndataIn: " + dataInField.getText() + "\nhoraIn: " + HorarioInField.getText() + 
-                            "\ndataOut: " + dataOutField.getText() + "\nhoraOut: " + HorarioOutField.getText();
-        writeFile(fileName);
+            eventData = "nome: " + NameField.getText() + "\nhoraIn: " + HorarioInField.getText() + "\nhoraOut: " + HorarioOutField.getText();
         frame.dispose();
     }
 
@@ -65,17 +51,9 @@ class main{
         placaField = new JTextField();
         panel.add(placaField); // adiciona a caixa de 'input' no painel
         
-        panel.add(new JLabel("Data de Entrada:"));
-        dataInField = new JTextField();
-        panel.add(dataInField);
-        
         panel.add(new JLabel("Horário de Entrada:"));
         HorarioInField = new JTextField();
         panel.add(HorarioInField);
-        
-        panel.add(new JLabel("Data de Saída:"));
-        dataOutField = new JTextField();
-        panel.add(dataOutField);
         
         panel.add(new JLabel("Horário de Saída:"));
         HorarioOutField = new JTextField();
@@ -86,7 +64,7 @@ class main{
 
         initialFrame.setIconImage(icon.getImage()); // define o icone da janela
         initialFrame.getContentPane().add(panel); // adiciona o JPanel ao JFrame
-        initialFrame.setSize(400, 400); // define o tamanho da janela
+        initialFrame.setSize(400, 300); // define o tamanho da janela
         initialFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // define o tipo de JFrame
     }
     
