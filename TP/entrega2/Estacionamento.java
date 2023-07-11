@@ -24,27 +24,16 @@ class Estacionamento{
     {
         for(Acesso i : acessos)
             if(placa.equals(i.placa)){
-                if(i.mensalista){
-                    System.out.println("Mensalista");
+                if(i.mensalista)
                     return valorMensal;
-                }
-                if(i.evento){
-                    System.out.println("Evento");
+                if(i.evento)
                     return valorEvento;
-                }
-                if(i.noturno){
-                    System.out.println("Noturno");
+                if(i.noturno)
                     return valorNoite;
-                }
-                if(i.tempo > 540){
-                    System.out.println("Diaria Diurna");
+                if(i.tempo > 540)
                     return valorDia;
-                }
-                if(i.tempo >= 60){
-                    System.out.println("Hora Cheia");
+                if(i.tempo >= 60)
                     return i.tempo % 60 == 0 ? (i.tempo/60)*valorHora : ((i.tempo/60)+1)*valorHora;
-                }
-                System.out.println("Fração");
                 return i.tempo % 15 == 0 ? (i.tempo/15)*valorFracao : ((i.tempo/15)+1)*valorFracao;
             }
         return 0;
@@ -56,6 +45,18 @@ class Estacionamento{
         this.valorRetorno += calcValor(acesso.placa)*retorno/100;
         acesso.setValorAcesso(calcValor(acesso.placa));
         acesso.setValorContratante(calcValor(acesso.placa)*retorno/100);
+    }
+
+    public Acesso buscarAcesso(String p){
+        for(Acesso a : acessos)
+            if(p.equals(a.placa))   
+                return a;
+    }
+
+    public void mudarAcesso(String p, Acesso newAcesso){
+        for(Acesso a : acessos)
+            if(p.equals(a.placa))
+                a = newAcesso;
     }
 
     public void removerAcesso(String placa){
