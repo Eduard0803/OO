@@ -2,8 +2,8 @@ class Horario{
     private int hora;
     private int minuto;
 
-    private Horario(){}
-    public Horario(int hora, int minuto) {
+    private Horario(){} // metodo construtor padrão
+    public Horario(int hora, int minuto){ // metodo construtor alternativo
         this.hora = hora;
         this.minuto = minuto;
     }

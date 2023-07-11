@@ -6,9 +6,9 @@ class Estacionamento{
     int valorHora, valorNoite, capacidade, retorno;
     LinkedList <Acesso> acessos = new LinkedList<>();
     
-    private Estacionamento(){}
-    public Estacionamento(String nome, float valorFracao, int valorHora, float valorDia, int valorNoite, float valorMensal, float valorEvento, int capacidade, int retorno)
-    {
+    private Estacionamento(){} // metodo contrutor padrão
+    // metodo construtor alternativo
+    public Estacionamento(String nome, float valorFracao, int valorHora, float valorDia, int valorNoite, float valorMensal, float valorEvento, int capacidade, int retorno){
         this.nome = nome;
         this.valorFracao = valorFracao;
         this.valorHora = valorHora;
@@ -20,8 +20,7 @@ class Estacionamento{
         this.retorno = retorno;
     }
     
-    public float calcValor(String placa)
-    {
+    public float calcValor(String placa){ // metodo para calcular o valor do acesso
         for(Acesso i : acessos)
             if(placa.equals(i.placa)){
                 if(i.mensalista)
@@ -39,7 +38,7 @@ class Estacionamento{
         return 0;
     }
 
-    public void inserirAcesso(Acesso acesso){
+    public void inserirAcesso(Acesso acesso){ // insere um novo acesso na lista
         acessos.add(acesso);
         this.valorArrecadado += calcValor(acesso.placa);
         this.valorRetorno += calcValor(acesso.placa)*retorno/100;
@@ -47,27 +46,26 @@ class Estacionamento{
         acesso.setValorContratante(calcValor(acesso.placa)*retorno/100);
     }
 
-    public Acesso buscarAcesso(String p){
+    public Acesso buscarAcesso(String p){ // busca um acesso na lista
         for(Acesso a : acessos)
             if(p.equals(a.placa))   
                 return a;
     }
 
-    public void mudarAcesso(String p, Acesso newAcesso){
+    public void mudarAcesso(String p, Acesso newAcesso){ // atualiza um acesso da lista
         for(Acesso a : acessos)
             if(p.equals(a.placa))
                 a = newAcesso;
     }
 
-    public void removerAcesso(String placa){
+    public void removerAcesso(String placa){ // remove um acesso da lista
         for(Acesso i : acessos)
             if(placa.equals(i.placa))
                 acessos.remove(i);
     }
 
-    public boolean temVaga(){return acessos.size() < capacidade;}
-    public boolean taCheio(){return !temVaga();}
-
-    public float getValorArrecadado(){return valorArrecadado;}
-    public float getValorRetorno(){return valorRetorno;}
+    public boolean temVaga(){return acessos.size() < capacidade;} // retorna se tem vaga na lista
+    public boolean taCheio(){return !temVaga();} // retorna se o estacionamento ta cheio
+    public float getValorArrecadado(){return valorArrecadado;} // retorna o valor arrecadado do estacionamento
+    public float getValorRetorno(){return valorRetorno;} // retorna o valor de retorno ao contratante
 }

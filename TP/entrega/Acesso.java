@@ -5,9 +5,8 @@ class Acesso{
     Duracao duracao;
     boolean mensalista=false, evento=false, noturno=false;
 
-    private Acesso(){}
-    public Acesso(String placa, Duracao duracao, String tp)
-    {
+    private Acesso(){} // metodo construtor padrão
+    public Acesso(String placa, Duracao duracao, String tp){ // metodo construtor alternativo
         this.placa = placa;
         this.duracao = duracao;
         this.tempo = duracao.calcularTempo();
@@ -21,6 +20,6 @@ class Acesso{
             this.noturno = true;
     }
 
-    protected void setValorAcesso(float valor){this.valorAcesso = valor;}
-    protected void setValorContratante(float valor){this.valorContratante = valor;}
+    protected void setValorAcesso(float valor){this.valorAcesso = valor;} // define o valor do acesso
+    protected void setValorContratante(float valor){this.valorContratante = valor;} // define o valor do contratante
 }

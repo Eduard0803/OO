@@ -4,7 +4,8 @@ class Duracao{
 	Data dataEntrada, dataSaida;
 	Horario horarioEntrada , horarioSaida;
 	  
-	private Duracao(){}	
+	private Duracao(){} // metodo construtor padrão
+	// metodo construtor alternativo
 	public Duracao(String dataEntrada, String horarioEntrada, String dataSaida, String horarioSaida) throws ValorAcessoInvalidoException{
 		this.dataEntrada = new Data(computeTime(dataEntrada)[0], computeTime(dataEntrada)[1], computeTime(dataEntrada)[2]);
 		this.horarioEntrada = new Horario(computeHour(horarioEntrada)[0], computeHour(horarioEntrada)[1]);
@@ -13,7 +14,7 @@ class Duracao{
 		this.horarioSaida = new Horario(computeHour(horarioSaida)[0], computeHour(horarioSaida)[1]);
 	}
 		
-	private int[] computeTime(String date) throws ValorAcessoInvalidoException{
+	private int[] computeTime(String date) throws ValorAcessoInvalidoException{ // transforma a string em um vetor de int
 		int[] data = new int[3];
 		int i=0;
 		for(String str : date.split("/")){
@@ -24,7 +25,7 @@ class Duracao{
 		return data;
 	}
 	
-	private int[] computeHour(String horario) throws ValorAcessoInvalidoException{
+	private int[] computeHour(String horario) throws ValorAcessoInvalidoException{ // transforma a string em um vetor de int
 		int[] horas = new int[2];
 		int i=0;
 		for(String str : horario.split(":")){
@@ -35,7 +36,7 @@ class Duracao{
 		return horas;
 	}
 
-	public int calcularTempo(){
+	public int calcularTempo(){ // retorna a diferença de tempo em minutos
 		int diaEntrada = dataEntrada.getDia(), mesEntrada = dataEntrada.getMes(), anoEntrada = dataEntrada.getAno(), horaEntrada = horarioEntrada.getHora(), minutoEntrada = horarioEntrada.getMinuto();
 		int diaSaida = dataSaida.getDia(), mesSaida = dataSaida.getMes(), anoSaida = dataSaida.getAno(), horaSaida = horarioSaida.getHora(), minutoSaida = horarioSaida.getMinuto();
 
