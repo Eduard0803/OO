@@ -8,6 +8,11 @@ Prof: [Dr. Andre Luiz Peron Martins Lanna](https://github.com/andrelanna/)
 [Diagrama de Objetos](Diagrams/Object_Diagram.png)
 
 ### [Entrega](entrega/)
+passos para executar o programa  
+- instalar jdk: `sudo apt install default-jdk`  
+- `cd entrega`  
+- compilar: `javac main.java`  
+- interpretar: `java main`  
 
 ### Estudantes
 | Nome | Matricula |  
