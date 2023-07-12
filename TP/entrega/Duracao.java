@@ -7,33 +7,26 @@ class Duracao{
 	private Duracao(){} // metodo construtor padrão
 	// metodo construtor alternativo
 	public Duracao(String dataEntrada, String horarioEntrada, String dataSaida, String horarioSaida) throws ValorAcessoInvalidoException{
-		this.dataEntrada = new Data(computeTime(dataEntrada)[0], computeTime(dataEntrada)[1], computeTime(dataEntrada)[2]);
-		this.horarioEntrada = new Horario(computeHour(horarioEntrada)[0], computeHour(horarioEntrada)[1]);
-		
-		this.dataSaida = new Data(computeTime(dataSaida)[0], computeTime(dataSaida)[1], computeTime(dataSaida)[2]);
-		this.horarioSaida = new Horario(computeHour(horarioSaida)[0], computeHour(horarioSaida)[1]);
-	}
-		
-	private int[] computeTime(String date) throws ValorAcessoInvalidoException{ // transforma a string em um vetor de int
-		int[] data = new int[3];
-		int i=0;
-		for(String str : date.split("/")){
-			data[i]=Integer.parseInt(str);
-			if(data[i++] <= 0)
-				throw new ValorAcessoInvalidoException("Data Incorreta");
-		}
-		return data;
+		this.dataEntrada = new Data(compute(dataEntrada, "/")[0], compute(dataEntrada, "/")[1], compute(dataEntrada, "/")[2]); // define a data de entrada
+		this.horarioEntrada = new Horario(compute(horarioEntrada, ":")[0], compute(horarioEntrada, ":")[1]); // define o horario de entrada
+		this.dataSaida = new Data(compute(dataSaida, "/")[0], compute(dataSaida, "/")[1], compute(dataSaida, "/")[2]); // define a data de saida
+		this.horarioSaida = new Horario(compute(horarioSaida, ":")[0], compute(horarioSaida, ":")[1]); // defina o horario de saida
 	}
 	
-	private int[] computeHour(String horario) throws ValorAcessoInvalidoException{ // transforma a string em um vetor de int
-		int[] horas = new int[2];
+	private int[] compute(String s, String sep) throws ValorAcessoInvalidoException{ // separa a string em um vetor de int
+		int[] v = new int[3];
 		int i=0;
-		for(String str : horario.split(":")){
-			horas[i] = Integer.parseInt(str);
-			if(horas[i++] < 0)
-				throw new ValorAcessoInvalidoException("Hora Incorreta");
+		for(String str : s.split(sep)){
+			v[i] = Integer.parseInt(str);
+			if(v[i++] <= 0)
+				if(sep.equals("/"))
+					throw new ValorAcessoInvalidoException("Data Incorreta");
+				else if(sep.equals(":"))
+					throw new ValorAcessoInvalidoException("Hora Incorreta");
+				else
+					throw new ValorAcessoInvalidoException("Entrada Incorreta");
 		}
-		return horas;
+		return v;
 	}
 
 	public int calcularTempo(){ // retorna a diferença de tempo em minutos

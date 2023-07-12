@@ -11,7 +11,7 @@ class Acesso{
         this.duracao = duracao;
         this.tempo = duracao.calcularTempo();
         
-        tp = tp.toLowerCase();
+        tp = tp.toLowerCase(); // transforma toda a string para minusculo
         if(tp.equals("mensalista"))
             this.mensalista = true;
         else if(tp.equals("evento"))

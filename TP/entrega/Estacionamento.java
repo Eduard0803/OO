@@ -46,10 +46,11 @@ class Estacionamento{
         acesso.setValorContratante(calcValor(acesso.placa)*retorno/100);
     }
 
-    public Acesso buscarAcesso(String p){ // busca um acesso na lista
+    public Acesso buscarAcesso(String p, Acesso r){ // busca um acesso na lista
         for(Acesso a : acessos)
             if(p.equals(a.placa))   
-                return a;
+                r = a;
+        return r;
     }
 
     public void mudarAcesso(String p, Acesso newAcesso){ // atualiza um acesso da lista
