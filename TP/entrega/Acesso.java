@@ -1,3 +1,4 @@
+
 class Acesso{
     String placa;
     int tempo;
@@ -22,4 +23,6 @@ class Acesso{
 
     protected void setValorAcesso(float valor){this.valorAcesso = valor;} // define o valor do acesso
     protected void setValorContratante(float valor){this.valorContratante = valor;} // define o valor do contratante
+    public float getValorAcesso() {return valorAcesso;}
+    public float getValorContratante() {return valorContratante;}
 }

@@ -1,3 +1,4 @@
+
 import java.time.*;
 
 class Duracao{
@@ -18,10 +19,10 @@ class Duracao{
 		int i=0;
 		for(String str : s.split(sep)){
 			v[i] = Integer.parseInt(str);
-			if(v[i++] <= 0)
-				if(sep.equals("/"))
+			if(v[i++] < 0)
+				if(!sep.equals("/"))
 					throw new ValorAcessoInvalidoException("Data Incorreta");
-				else if(sep.equals(":"))
+				else if(!sep.equals(":"))
 					throw new ValorAcessoInvalidoException("Hora Incorreta");
 				else
 					throw new ValorAcessoInvalidoException("Entrada Incorreta");
@@ -32,7 +33,6 @@ class Duracao{
 	public int calcularTempo(){ // retorna a diferença de tempo em minutos
 		int diaEntrada = dataEntrada.getDia(), mesEntrada = dataEntrada.getMes(), anoEntrada = dataEntrada.getAno(), horaEntrada = horarioEntrada.getHora(), minutoEntrada = horarioEntrada.getMinuto();
 		int diaSaida = dataSaida.getDia(), mesSaida = dataSaida.getMes(), anoSaida = dataSaida.getAno(), horaSaida = horarioSaida.getHora(), minutoSaida = horarioSaida.getMinuto();
-
 		LocalDateTime entrada = LocalDateTime.of(anoEntrada, mesEntrada, diaEntrada, horaEntrada, minutoEntrada, 0);
 		LocalDateTime saida = LocalDateTime.of(anoSaida, mesSaida, diaSaida, horaSaida, minutoSaida, 0);
 		

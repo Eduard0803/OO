@@ -1,3 +1,5 @@
+
+
 class DescricaoEmBrancoException extends Exception{
     // Exceção para quando não inserir dados obrigatórios
     private DescricaoEmBrancoException(){}
